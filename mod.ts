@@ -14,8 +14,10 @@ export default {
     "assets/prism_tomorrow.css",
     "assets/reset.css",
     "assets/variables.css",
-    "types/any.d.ts",
+    "deps.ts",
     "favicon.ico",
+    "types/any.d.ts",
+    "yarn.lock",
     "_footer.tsx",
     "_head.tsx",
     "_header.tsx",
@@ -28,6 +30,5 @@ export default {
     "_utils.tsx",
     "blog/_archives.tsx",
     "blog/_layout.tsx",
-    "deps.ts",
   ],
 };
