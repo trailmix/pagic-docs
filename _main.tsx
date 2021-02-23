@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any no-undef
-import { React } from "./_deps.ts";
-import type { PagicLayout } from "./_deps.ts";
+import { React } from "./_deps.tsx";
+import type { PagicLayout } from "./_deps.tsx";
 import throttle from "https://cdn.pagic.org/lodash@4.17.20/esnext/throttle.js";
 
 import Loading from "./_loading.tsx";

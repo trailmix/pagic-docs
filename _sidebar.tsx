@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-undef
-import { React } from "./_deps.ts";
-import type { PageProps, PagePropsSidebar, PagicLayout } from "./_deps.ts";
+import { React } from "./_deps.tsx";
+import type { PageProps, PagePropsSidebar, PagicLayout } from "./_deps.tsx";
 
 import { classnames, isRelativeLink } from "./_utils.tsx";
 

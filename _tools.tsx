@@ -1,5 +1,5 @@
-import { React } from "./_deps.ts";
-import type { PagicLayout } from "./_deps.ts";
+import { React } from "./_deps.tsx";
+import type { PagicLayout } from "./_deps.tsx";
 
 const Tools: PagicLayout = ({ config, pagePath }) => {
   if (!config.tools) {

@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any no-undef
-import { React } from "./_deps.ts";
-import type { PagicLayout } from "./_deps.ts";
+import { React } from "./_deps.tsx";
+import type { PagicLayout } from "./_deps.tsx";
 
 import Popover from "./_popover.tsx";
 

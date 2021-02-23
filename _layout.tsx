@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-undef
-import { React } from "./_deps.ts";
-import type { PagicLayout } from "./_deps.ts";
+import { React } from "./_deps.tsx";
+import type { PagicLayout } from "./_deps.tsx";
 import Head from "./_head.tsx";
 import Header from "./_header.tsx";
 import Sidebar from "./_sidebar.tsx";
