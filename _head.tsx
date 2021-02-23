@@ -1,6 +1,6 @@
 import { React } from "./_deps.ts";
 import type { PagicLayout } from "./_deps.ts";
-// @deno-types="./types/any.d.ts"
+// @deno-types="./types/_any.d.ts"
 import Helmet from "https://cdn.pagic.org/react-helmet@6.1.0/esnext/react-helmet.js";
 
 const Head: PagicLayout<{
