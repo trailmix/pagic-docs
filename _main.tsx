@@ -29,16 +29,17 @@ const Main: PagicLayout = (props) => {
         any,
         "aboveViewport" | "inViewport" | "belowViewport"
       >();
-      // @ts-ignore
+      // @ts-ignore https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
       for (let a of document.querySelectorAll(".toc a")) {
-        // @ts-ignore
+        // @ts-ignore https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
         const bounding = document
           .getElementById(a.hash.slice(1))
           .getBoundingClientRect();
         const belowTop = bounding.y > 64;
-        // @ts-ignore
+        // @ts-ignore https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
         const aboveBottom =
-          bounding.y + bounding.height + 16 <= window.innerHeight;
+          bounding.y + bounding.height + 16 <=
+          (window.innerHeight || document.documentElement.clientHeight);
         if ((belowTop && aboveBottom) || (!belowTop && !aboveBottom)) {
           anchorPositionMap.set(a, "inViewport");
         } else if (belowTop && !aboveBottom) {
@@ -59,7 +60,7 @@ const Main: PagicLayout = (props) => {
         }
       }
       if (activeAnchor) {
-        // @ts-ignore
+        // @ts-ignore force
         document
           .querySelectorAll(".toc a.active")
           .forEach((node) => node.classList.remove("active"));
