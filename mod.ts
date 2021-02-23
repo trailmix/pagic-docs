@@ -28,5 +28,6 @@ export default {
     '_utils.tsx',
     'blog/_archives.tsx',
     'blog/_layout.tsx',
+    'deps.ts',
   ],
 };
