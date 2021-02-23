@@ -5,7 +5,7 @@ import throttle from "https://cdn.pagic.org/lodash@4.17.20/esnext/throttle.js";
 
 import Loading from "./_loading.tsx";
 import { dateFormatter } from "./_utils.tsx";
-
+// @ts-ignore need for parse
 const Main: PagicLayout = (props) => {
   const {
     config,
@@ -31,15 +31,15 @@ const Main: PagicLayout = (props) => {
         any,
         "aboveViewport" | "inViewport" | "belowViewport"
       >();
-      // @ts-ignore document
+      // @ts-ignore need for parse
       for (const a of window.Deno.document.querySelectorAll(".toc a")) {
-        // @ts-ignore document
+        // @ts-ignore need for parse
         const bounding = document.getElementById(a.hash.slice(1))
           .getBoundingClientRect();
         const belowTop = bounding.y > 64;
 
         const aboveBottom =
-          // @ts-ignore document
+          // @ts-ignore need for parse
           bounding.y + bounding.height + 16 <= window.innerHeight;
         if ((belowTop && aboveBottom) || (!belowTop && !aboveBottom)) {
           anchorPositionMap.set(a, "inViewport");
@@ -61,6 +61,7 @@ const Main: PagicLayout = (props) => {
         }
       }
       if (activeAnchor) {
+        // @ts-ignore need for parse
         document.querySelectorAll(".toc a.active").forEach((node) =>
           node.classList.remove("active")
         );

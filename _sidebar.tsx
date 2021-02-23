@@ -89,12 +89,14 @@ const FoldableItem: React.FC<{
               if (isActive) {
                 toggleFold(e);
               } else {
+                // @ts-ignore need for parse
                 document.documentElement.classList.remove("show_sidebar");
                 if (fold) {
                   foldOl(false);
                 }
               }
             } else {
+              // @ts-ignore need for parse
               document.documentElement.classList.remove("show_sidebar");
             }
           } else {

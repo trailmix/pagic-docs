@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-undef
 import { React } from "./deps.ts";
 import type { PagicLayout } from "./deps.ts";
 import Head from "./_head.tsx";
@@ -8,9 +9,10 @@ import Footer from "./_footer.tsx";
 import Tools from "./_tools.tsx";
 import { classnames } from "./_utils.tsx";
 
+// @ts-ignore need for parse
 const Layout: PagicLayout = (props) => {
   const [isDark, setIsDark] = React.useState(
-    window.Deno ? false : // deno-lint-ignore no-undef
+    window.Deno ? false : // @ts-ignore need for parse
       document.documentElement.classList.contains("is_dark"),
   );
   return (

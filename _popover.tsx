@@ -127,10 +127,13 @@ const PopoverPortal: React.FC<
   if (window.Deno) {
     return null;
   }
+  // @ts-ignore need for parse
   let popoverRoot = document.getElementById(popoverRootId);
   if (!popoverRoot) {
+    // @ts-ignore need for parse
     popoverRoot = document.createElement("div");
     popoverRoot.id = popoverRootId;
+    // @ts-ignore need for parse
     document.body.appendChild(popoverRoot);
   }
   return ReactDOM.createPortal(

@@ -7,6 +7,7 @@ import Popover from "./_popover.tsx";
 const Header: PagicLayout<{
   isDark: boolean;
   setIsDark: (isDark: boolean) => void;
+  // @ts-ignore need for parse
 }> = ({ config, language, isDark, setIsDark }) => (
   <header>
     <h1 className="hide_on_mobile">
@@ -25,9 +26,12 @@ const Header: PagicLayout<{
             }}
             onClick={(e) => {
               e.preventDefault();
+              // @ts-ignore need for parse
               if (document.documentElement.classList.contains("show_sidebar")) {
+                // @ts-ignore need for parse
                 document.documentElement.classList.remove("show_sidebar");
               } else {
+                // @ts-ignore need for parse
                 document.documentElement.classList.add("show_sidebar");
               }
             }}
@@ -38,6 +42,7 @@ const Header: PagicLayout<{
             <a
               href={config.root}
               onClick={() => {
+                // @ts-ignore need for parse
                 document.documentElement.classList.remove("show_sidebar");
               }}
             >
@@ -103,10 +108,12 @@ const Header: PagicLayout<{
               value={language.code}
               onChange={(e) => {
                 const url = new URL(location.href);
+                // @ts-ignore need for parse
                 const nextLanguageCode = e.target.value;
                 if (language.root !== "/") {
                   url.pathname = url.pathname.replace(language.root, "/");
                 }
+                // @ts-ignore need for parse
                 const nextLanguage = config.i18n?.languages.find(({ code }) =>
                   code === nextLanguageCode
                 );
@@ -116,17 +123,21 @@ const Header: PagicLayout<{
                 location.href = url.toString();
               }}
             >
-              {config.i18n.languages.map(({ code, name }) => (
-                <option key={code} value={code}>
-                  {name}
-                </option>
-              ))}
+              {
+                // @ts-ignore need for parse
+                config.i18n.languages.map(({ code, name }) => (
+                  <option key={code} value={code}>
+                    {name}
+                  </option>
+                ))
+              }
             </select>
           </li>
         )}
         <li
           onClick={() => {
             setIsDark(!isDark);
+            // @ts-ignore need for parse
             document.cookie = `is_dark=${
               !isDark ? "1" : "0"
             }; expires=Tue, 19 Jun 2038 03:14:07 UTC; path=/`;
