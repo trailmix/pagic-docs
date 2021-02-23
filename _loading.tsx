@@ -1,4 +1,4 @@
-import { React } from "./deps.ts";
+import { React } from "./_deps.ts";
 
 const style = `
 .sk-circle {

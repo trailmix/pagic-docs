@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any no-undef
-import { React, ReactDOM } from "./deps.ts";
+import { React, ReactDOM } from "./_deps.ts";
 import { classnames } from "./_utils.tsx";
 
 interface PopoverProps {

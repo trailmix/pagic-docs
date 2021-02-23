@@ -1,5 +1,5 @@
-import { React } from "./deps.ts";
-import type { PagicLayout } from "./deps.ts";
+import { React } from "./_deps.ts";
+import type { PagicLayout } from "./_deps.ts";
 // @deno-types="./types/any.d.ts"
 import Helmet from "https://cdn.pagic.org/react-helmet@6.1.0/esnext/react-helmet.js";
 
