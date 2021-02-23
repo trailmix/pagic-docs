@@ -1,5 +1,3 @@
-/// <reference lib="dom" />
-/// <reference lib="deno.window" />
 export type {
   PageProps,
   PagicLayout,
