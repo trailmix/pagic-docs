@@ -1,7 +1,7 @@
-import { React } from '../deps.ts';
-import type { PagicLayout } from '../deps.ts';
+import { React } from "../deps.ts";
+import type { PagicLayout } from "../deps.ts";
 
-import { dateFormatter } from '../_utils.tsx';
+import { dateFormatter } from "../_utils.tsx";
 
 const Archives: PagicLayout = (props) => {
   const { config, contentTitle, title, blog } = props;
@@ -14,7 +14,9 @@ const Archives: PagicLayout = (props) => {
           <ul className="main_archives">
             {blog?.posts.map(({ title, link, date }) => (
               <li key={link}>
-                <time dateTime={date.toString()}>{dateFormatter['yyyy-MM-dd'](date)}</time>
+                <time dateTime={date.toString()}>
+                  {dateFormatter["yyyy-MM-dd"](date)}
+                </time>
                 <div>
                   <a href={`${config.root}${link}`}>{title}</a>
                 </div>

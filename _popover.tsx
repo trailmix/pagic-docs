@@ -1,10 +1,16 @@
-// deno-lint-ignore-file no-explicit-any
-import { React, ReactDOM } from './deps.ts';
-import { classnames } from './_utils.tsx';
+// deno-lint-ignore-file no-explicit-any no-undef
+import { React, ReactDOM } from "./deps.ts";
+import { classnames } from "./_utils.tsx";
 
 interface PopoverProps {
   content: React.ReactNode;
-  placement?: 'top-start' | 'top' | 'top-end' | 'bottom-start' | 'bottom' | 'bottom-end';
+  placement?:
+    | "top-start"
+    | "top"
+    | "top-end"
+    | "bottom-start"
+    | "bottom"
+    | "bottom-end";
   className?: string;
   style?: React.CSSProperties;
   onClick?: React.MouseEventHandler;
@@ -16,14 +22,15 @@ const hoverMap: Record<string, boolean> = {};
 
 export const Popover: React.FC<PopoverProps> = ({
   content,
-  placement = 'top',
+  placement = "top",
   className,
   style,
   children,
   onClick,
 }) => {
   const [hover, setHover] = React.useState(false);
-  const popoverRootId = 'popover-root-' + React.useMemo(() => Math.random().toString().slice(2), []);
+  const popoverRootId = "popover-root-" +
+    React.useMemo(() => Math.random().toString().slice(2), []);
   const [topLeft, setTopLeft] = React.useState({
     top: 0,
     left: 0,
@@ -35,10 +42,14 @@ export const Popover: React.FC<PopoverProps> = ({
       if (node !== null) {
         const { top, left, right, bottom } = node.getBoundingClientRect();
         setTopLeft({
-          top: (window as any).pageYOffset + (placement.startsWith('top') ? top : bottom),
-          left:
-            (window as any).pageXOffset +
-            (placement.endsWith('start') ? left : placement.endsWith('end') ? right : (left + right) / 2),
+          top: (window as any).pageYOffset +
+            (placement.startsWith("top") ? top : bottom),
+          left: (window as any).pageXOffset +
+            (placement.endsWith("start")
+              ? left
+              : placement.endsWith("end")
+              ? right
+              : (left + right) / 2),
         });
       }
     },
@@ -83,7 +94,7 @@ export const Popover: React.FC<PopoverProps> = ({
           content={content}
           placement={placement}
           style={{
-            display: hover ? 'block' : 'none',
+            display: hover ? "block" : "none",
             top: topLeft.top,
             left: topLeft.left,
             ...style,
@@ -102,26 +113,37 @@ const PopoverPortal: React.FC<
   PopoverProps & {
     popoverRootId: string;
   }
-> = ({ popoverRootId, content, placement = 'top', className, style, onMouseEnter, onMouseLeave }) => {
+> = (
+  {
+    popoverRootId,
+    content,
+    placement = "top",
+    className,
+    style,
+    onMouseEnter,
+    onMouseLeave,
+  },
+) => {
   if (window.Deno) {
     return null;
   }
-  // @ts-ignore comment
   let popoverRoot = document.getElementById(popoverRootId);
   if (!popoverRoot) {
-    // @ts-ignore comment
-    popoverRoot = document.createElement('div');
+    popoverRoot = document.createElement("div");
     popoverRoot.id = popoverRootId;
-    // @ts-ignore comment
     document.body.appendChild(popoverRoot);
   }
   return ReactDOM.createPortal(
     <div
-      className={classnames(className, 'popover')}
+      className={classnames(className, "popover")}
       style={{
-        transform: `translate(${placement.endsWith('start') ? '0' : placement.endsWith('end') ? '-100%' : '-50%'}, ${
-          placement.startsWith('top') ? '-100%' : '0%'
-        })`,
+        transform: `translate(${
+          placement.endsWith("start")
+            ? "0"
+            : placement.endsWith("end")
+            ? "-100%"
+            : "-50%"
+        }, ${placement.startsWith("top") ? "-100%" : "0%"})`,
         ...style,
       }}
       onMouseEnter={onMouseEnter}
