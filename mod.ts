@@ -15,8 +15,6 @@ export default {
     "assets/reset.css",
     "assets/variables.css",
     "favicon.ico",
-    "types/any.d.ts",
-    "yarn.lock",
     "_footer.tsx",
     "_head.tsx",
     "_header.tsx",
