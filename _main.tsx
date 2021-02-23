@@ -32,7 +32,7 @@ const Main: PagicLayout = (props) => {
         "aboveViewport" | "inViewport" | "belowViewport"
       >();
       // @ts-ignore need for parse
-      for (const a of window.Deno.document.querySelectorAll(".toc a")) {
+      for (const a of document.querySelectorAll(".toc a")) {
         // @ts-ignore need for parse
         const bounding = document.getElementById(a.hash.slice(1))
           .getBoundingClientRect();
