@@ -1,6 +1,7 @@
-import { React, PagicLayout } from "https://deno.land/x/pagic@v1.2.0/mod.ts";
+import { React } from './deps.ts';
+import type { PagicLayout } from './deps.ts';
 // @deno-types="./types/any.d.ts"
-import Helmet from "https://cdn.pagic.org/react-helmet@6.1.0/esnext/react-helmet.js";
+import Helmet from 'https://cdn.pagic.org/react-helmet@6.1.0/esnext/react-helmet.js';
 
 const Head: PagicLayout<{
   isDark: boolean;
@@ -17,27 +18,15 @@ const Head: PagicLayout<{
       <Helmet>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-        <title>
-          {title
-            ? outputPath !== "index.html"
-              ? `${title} · ${config.title}`
-              : title
-            : config.title}
-        </title>
-        {config.description && (
-          <meta name="description" content={config.description} />
-        )}
+        <title>{title ? (outputPath !== 'index.html' ? `${title} · ${config.title}` : title) : config.title}</title>
+        {config.description && <meta name="description" content={config.description} />}
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="stylesheet" href={`${config.root}assets/index.css`} />
         <link
           id="prismTheme"
           rel="stylesheet"
-          href={
-            isDark
-              ? `${config.root}assets/prism_tomorrow.css`
-              : `${config.root}assets/prism.css`
-          }
+          href={isDark ? `${config.root}assets/prism_tomorrow.css` : `${config.root}assets/prism.css`}
         />
 
         <script>{scriptSetIsDark}</script>

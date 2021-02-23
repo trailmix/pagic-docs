@@ -1,4 +1,5 @@
-import { React, PagicLayout } from "https://deno.land/x/pagic@v1.2.0/mod.ts";
+import { React } from './deps.ts';
+import type { PagicLayout } from './deps.ts';
 
 const Footer: PagicLayout = () => (
   <footer>

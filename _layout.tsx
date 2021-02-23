@@ -1,17 +1,17 @@
-import { React, PagicLayout } from "https://deno.land/x/pagic@v1.2.0/mod.ts";
-
-import Head from "./_head.tsx";
-import Header from "./_header.tsx";
-import Sidebar from "./_sidebar.tsx";
-import Main from "./_main.tsx";
-import Footer from "./_footer.tsx";
-import Tools from "./_tools.tsx";
-import { classnames } from "./_utils.tsx";
+import { React } from './deps.ts';
+import type { PagicLayout } from './deps.ts';
+import Head from './_head.tsx';
+import Header from './_header.tsx';
+import Sidebar from './_sidebar.tsx';
+import Main from './_main.tsx';
+import Footer from './_footer.tsx';
+import Tools from './_tools.tsx';
+import { classnames } from './_utils.tsx';
 
 const Layout: PagicLayout = (props) => {
   const [isDark, setIsDark] = React.useState(
     // @ts-ignore
-    window.Deno ? false : document.documentElement.classList.contains("is_dark")
+    window.Deno ? false : document.documentElement.classList.contains('is_dark'),
   );
   return (
     <html className={classnames({ is_dark: isDark })}>

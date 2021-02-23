@@ -1,6 +1,7 @@
-import { React, PagicLayout } from "https://deno.land/x/pagic@v1.2.0/mod.ts";
+import { React } from './deps.ts';
+import type { PagicLayout } from './deps.ts';
 
-import Popover from "./_popover.tsx";
+import Popover from './_popover.tsx';
 
 const Header: PagicLayout<{
   isDark: boolean;
@@ -8,9 +9,7 @@ const Header: PagicLayout<{
 }> = ({ config, language, isDark, setIsDark }) => (
   <header>
     <h1 className="hide_on_mobile">
-      <a href={`${config.root}${language?.root.slice(1) ?? ""}`}>
-        {config.title}
-      </a>
+      <a href={`${config.root}${language?.root.slice(1) ?? ''}`}>{config.title}</a>
     </h1>
     <nav>
       <ul>
@@ -24,12 +23,12 @@ const Header: PagicLayout<{
             onClick={(e) => {
               e.preventDefault();
               // @ts-ignore
-              if (document.documentElement.classList.contains("show_sidebar")) {
+              if (document.documentElement.classList.contains('show_sidebar')) {
                 // @ts-ignore
-                document.documentElement.classList.remove("show_sidebar");
+                document.documentElement.classList.remove('show_sidebar');
               } else {
                 // @ts-ignore
-                document.documentElement.classList.add("show_sidebar");
+                document.documentElement.classList.add('show_sidebar');
               }
             }}
           />
@@ -40,7 +39,7 @@ const Header: PagicLayout<{
               href={config.root}
               onClick={() => {
                 // @ts-ignore
-                document.documentElement.classList.remove("show_sidebar");
+                document.documentElement.classList.remove('show_sidebar');
               }}
             >
               {config.title}
@@ -48,7 +47,7 @@ const Header: PagicLayout<{
           </h1>
         </li>
         {config.nav
-          ?.filter(({ align }: any) => align !== "right")
+          ?.filter(({ align }: any) => align !== 'right')
           .map(({ text, link, target, popover }: any) => (
             <li key={link} className="hide_on_mobile">
               {popover ? (
@@ -66,7 +65,7 @@ const Header: PagicLayout<{
           ))}
         <li style={{ flexGrow: 1 }} />
         {config.nav
-          ?.filter(({ align }: any) => align === "right")
+          ?.filter(({ align }: any) => align === 'right')
           .map(({ text, link, target, popover }: any) => (
             <li key={link} className="hide_on_mobile">
               {popover ? (
@@ -104,15 +103,11 @@ const Header: PagicLayout<{
 
                 // @ts-ignore
                 const nextLanguageCode = e.target.value;
-                if (language.root !== "/") {
-                  url.pathname = url.pathname.replace(language.root, "/");
+                if (language.root !== '/') {
+                  url.pathname = url.pathname.replace(language.root, '/');
                 }
-                const nextLanguage = config.i18n?.languages.find(
-                  ({ code }) => code === nextLanguageCode
-                );
-                url.pathname = `${config.root}${nextLanguage!.root.slice(
-                  1
-                )}${url.pathname.replace(config.root, "")}`;
+                const nextLanguage = config.i18n?.languages.find(({ code }) => code === nextLanguageCode);
+                url.pathname = `${config.root}${nextLanguage!.root.slice(1)}${url.pathname.replace(config.root, '')}`;
 
                 // @ts-ignore
                 location.href = url.toString();
@@ -130,9 +125,7 @@ const Header: PagicLayout<{
           onClick={() => {
             setIsDark(!isDark);
             // @ts-ignore
-            document.cookie = `is_dark=${
-              !isDark ? "1" : "0"
-            }; expires=Tue, 19 Jun 2038 03:14:07 UTC; path=/`;
+            document.cookie = `is_dark=${!isDark ? '1' : '0'}; expires=Tue, 19 Jun 2038 03:14:07 UTC; path=/`;
           }}
           className="toggle_dark flex_center"
         >

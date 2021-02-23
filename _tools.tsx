@@ -1,4 +1,5 @@
-import { React, PagicLayout } from "https://deno.land/x/pagic@v1.2.0/mod.ts";
+import { React } from './deps.ts';
+import type { PagicLayout } from './deps.ts';
 
 const Tools: PagicLayout = ({ config, pagePath }) => {
   if (!config.tools) {
@@ -9,9 +10,7 @@ const Tools: PagicLayout = ({ config, pagePath }) => {
       {config.tools.editOnGitHub && (
         <a
           className="czs-pen button"
-          href={`${config.github}/edit/${config.branch ?? "main"}/${
-            config.srcDir
-          }/${pagePath}`}
+          href={`${config.github}/edit/${config.branch ?? 'main'}/${config.srcDir}/${pagePath}`}
           target="_blank"
           style={{ backgroundImage: `url("${config.root}assets/czs-pen.svg")` }}
         />
