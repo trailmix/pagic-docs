@@ -14,14 +14,13 @@ const Main: PagicLayout = (props) => {
     }
     const scrollHandler = () => {
       let anchorPositionMap = new Map<any, 'aboveViewport' | 'inViewport' | 'belowViewport'>();
-      // @ts-ignore https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
+      // @ts-ignore
       for (let a of document.querySelectorAll('.toc a')) {
-        // @ts-ignore https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
+        // @ts-ignore
         const bounding = document.getElementById(a.hash.slice(1)).getBoundingClientRect();
         const belowTop = bounding.y > 64;
-        // @ts-ignore https://developer.mozilla.org/en-US/docs/Web/API/Window/innerHeight
-        const aboveBottom =
-          bounding.y + bounding.height + 16 <= (window.innerHeight || document.documentElement.clientHeight);
+        // @ts-ignore
+        const aboveBottom = bounding.y + bounding.height + 16 <= window.innerHeight;
         if ((belowTop && aboveBottom) || (!belowTop && !aboveBottom)) {
           anchorPositionMap.set(a, 'inViewport');
         } else if (belowTop && !aboveBottom) {
@@ -42,7 +41,7 @@ const Main: PagicLayout = (props) => {
         }
       }
       if (activeAnchor) {
-        // @ts-ignore force
+        // @ts-ignore
         document.querySelectorAll('.toc a.active').forEach((node) => node.classList.remove('active'));
         activeAnchor.classList.add('active');
       }
