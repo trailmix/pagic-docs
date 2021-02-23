@@ -14,7 +14,6 @@ export default {
     "assets/prism_tomorrow.css",
     "assets/reset.css",
     "assets/variables.css",
-    "deps.ts",
     "favicon.ico",
     "types/any.d.ts",
     "yarn.lock",
