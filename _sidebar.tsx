@@ -1,7 +1,8 @@
-import { React } from './deps.ts';
-import type { PagicLayout, PageProps, PagePropsSidebar } from './deps.ts';
+// deno-lint-ignore-file no-undef
+import { React } from "./deps.ts";
+import type { PageProps, PagePropsSidebar, PagicLayout } from "./deps.ts";
 
-import { classnames, isRelativeLink } from './_utils.tsx';
+import { classnames, isRelativeLink } from "./_utils.tsx";
 
 const Sidebar: PagicLayout = ({ config, outputPath, sidebar }) => {
   if (!sidebar) {
@@ -11,7 +12,12 @@ const Sidebar: PagicLayout = ({ config, outputPath, sidebar }) => {
     <aside className="sidebar">
       <ol className="list_style_none">
         {sidebar.map((sidebarItem, index) => (
-          <FoldableItem key={index} config={config} outputPath={outputPath} sidebarItem={sidebarItem} />
+          <FoldableItem
+            key={index}
+            config={config}
+            outputPath={outputPath}
+            sidebarItem={sidebarItem}
+          />
         ))}
       </ol>
     </aside>
@@ -19,10 +25,13 @@ const Sidebar: PagicLayout = ({ config, outputPath, sidebar }) => {
 };
 
 const FoldableItem: React.FC<{
-  config: PageProps['config'];
-  outputPath: PageProps['outputPath'];
+  config: PageProps["config"];
+  outputPath: PageProps["outputPath"];
   sidebarItem: PagePropsSidebar[0];
-}> = ({ config, outputPath, sidebarItem: { text, link, expanded, children } }) => {
+}> = (
+  { config, outputPath, sidebarItem: { text, link, expanded, children } },
+) => {
+  // deno-lint-ignore no-explicit-any
   const olRef = React.useRef<any>(null);
   const [fold, setFold] = React.useState(expanded === false);
   const [olHeight, setOlHeight] = React.useState(0);
@@ -42,7 +51,7 @@ const FoldableItem: React.FC<{
       }, 17);
     } else {
       if (olHeight === 0) {
-        olRef.current.style.height = 'auto';
+        olRef.current.style.height = "auto";
         const currentHeight = olRef.current.getBoundingClientRect().height;
         olRef.current.style.height = 0;
         setTimeout(() => {
@@ -54,7 +63,7 @@ const FoldableItem: React.FC<{
       }
       setFold(fold);
       setTimeout(() => {
-        olRef.current.style.height = 'auto';
+        olRef.current.style.height = "auto";
       }, 300);
     }
   };
@@ -65,10 +74,12 @@ const FoldableItem: React.FC<{
     foldOl(!fold);
   };
   return (
-    <li className={children ? (fold ? 'fold' : 'unfold') : ''}>
+    <li className={children ? (fold ? "fold" : "unfold") : ""}>
       <a
-        href={link ? (isRelativeLink(link) ? `${config.root}${link}` : link) : '#'}
-        className={classnames('nav_link', {
+        href={link
+          ? (isRelativeLink(link) ? `${config.root}${link}` : link)
+          : "#"}
+        className={classnames("nav_link", {
           active: isActive,
           no_link: !link,
         })}
@@ -78,15 +89,15 @@ const FoldableItem: React.FC<{
               if (isActive) {
                 toggleFold(e);
               } else {
-                // @ts-ignore
-                document.documentElement.classList.remove('show_sidebar');
+                // @ts-ignore need for parse
+                document.documentElement.classList.remove("show_sidebar");
                 if (fold) {
                   foldOl(false);
                 }
               }
             } else {
-              // @ts-ignore
-              document.documentElement.classList.remove('show_sidebar');
+              // @ts-ignore need for parse
+              document.documentElement.classList.remove("show_sidebar");
             }
           } else {
             toggleFold(e);
@@ -99,14 +110,16 @@ const FoldableItem: React.FC<{
             <span
               className="czs-angle-up-l"
               style={{
-                backgroundImage: `url("${config.root}assets/czs-angle-up-l.svg")`,
+                backgroundImage:
+                  `url("${config.root}assets/czs-angle-up-l.svg")`,
               }}
               onClick={toggleFold}
             />
             <span
               className="czs-angle-down-l"
               style={{
-                backgroundImage: `url("${config.root}assets/czs-angle-down-l.svg")`,
+                backgroundImage:
+                  `url("${config.root}assets/czs-angle-down-l.svg")`,
               }}
               onClick={toggleFold}
             />
@@ -114,9 +127,20 @@ const FoldableItem: React.FC<{
         )}
       </a>
       {children && (
-        <ol className="list_style_none" ref={olRef} style={{ height: expanded === false ? 0 : 'auto' }}>
+        <ol
+          className="list_style_none"
+          ref={olRef}
+          style={{
+            height: expanded === false ? 0 : "auto",
+          }}
+        >
           {children.map((sidebarItem, index) => (
-            <FoldableItem key={index} config={config} outputPath={outputPath} sidebarItem={sidebarItem} />
+            <FoldableItem
+              key={index}
+              config={config}
+              outputPath={outputPath}
+              sidebarItem={sidebarItem}
+            />
           ))}
         </ol>
       )}
