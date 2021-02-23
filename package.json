@@ -4,6 +4,7 @@
   "description": "theme for pagic based on docs",
   "main": "mod.ts",
   "scripts": {
+    "lintnew": "deno lint --unstable",
     "test": "deno test --unstable --allow-read --allow-write --allow-net --allow-run",
     "lint": "run-s eslint prettier",
     "eslint": "eslint --ext .ts,.tsx,.js,.jsx .",

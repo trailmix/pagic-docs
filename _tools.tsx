@@ -1,6 +1,6 @@
 import { React } from './deps.ts';
 import type { PagicLayout } from './deps.ts';
-
+// / <reference path="react.d.ts" />
 const Tools: PagicLayout = ({ config, pagePath }) => {
   if (!config.tools) {
     return null;

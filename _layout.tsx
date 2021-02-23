@@ -10,7 +10,7 @@ import { classnames } from './_utils.tsx';
 
 const Layout: PagicLayout = (props) => {
   const [isDark, setIsDark] = React.useState(
-    // @ts-ignore
+    // @ts-ignore comment
     window.Deno ? false : document.documentElement.classList.contains('is_dark'),
   );
   return (

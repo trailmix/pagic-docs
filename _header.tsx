@@ -22,12 +22,12 @@ const Header: PagicLayout<{
             }}
             onClick={(e) => {
               e.preventDefault();
-              // @ts-ignore
+              // @ts-ignore comment
               if (document.documentElement.classList.contains('show_sidebar')) {
-                // @ts-ignore
+                // @ts-ignore comment
                 document.documentElement.classList.remove('show_sidebar');
               } else {
-                // @ts-ignore
+                // @ts-ignore comment
                 document.documentElement.classList.add('show_sidebar');
               }
             }}
@@ -38,7 +38,7 @@ const Header: PagicLayout<{
             <a
               href={config.root}
               onClick={() => {
-                // @ts-ignore
+                // @ts-ignore comment
                 document.documentElement.classList.remove('show_sidebar');
               }}
             >

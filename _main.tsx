@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 import { React } from './deps.ts';
 import type { PagicLayout } from './deps.ts';
 import throttle from 'https://cdn.pagic.org/lodash@4.17.20/esnext/throttle.js';
@@ -13,13 +14,14 @@ const Main: PagicLayout = (props) => {
       return;
     }
     const scrollHandler = () => {
-      let anchorPositionMap = new Map<any, 'aboveViewport' | 'inViewport' | 'belowViewport'>();
-      // @ts-ignore
-      for (let a of document.querySelectorAll('.toc a')) {
-        // @ts-ignore
+
+      const anchorPositionMap = new Map<any, 'aboveViewport' | 'inViewport' | 'belowViewport'>();
+      // @ts-ignore comment
+      for (const a of window.Deno.document.querySelectorAll('.toc a')) {
+        // @ts-ignore comment
         const bounding = document.getElementById(a.hash.slice(1)).getBoundingClientRect();
         const belowTop = bounding.y > 64;
-        // @ts-ignore
+        // @ts-ignore comment
         const aboveBottom = bounding.y + bounding.height + 16 <= window.innerHeight;
         if ((belowTop && aboveBottom) || (!belowTop && !aboveBottom)) {
           anchorPositionMap.set(a, 'inViewport');
@@ -30,7 +32,7 @@ const Main: PagicLayout = (props) => {
         }
       }
       let activeAnchor = null;
-      for (let [a, position] of anchorPositionMap) {
+      for (const [a, position] of anchorPositionMap) {
         if (position === 'aboveViewport') {
           activeAnchor = a;
         } else if (position === 'inViewport') {
@@ -41,7 +43,7 @@ const Main: PagicLayout = (props) => {
         }
       }
       if (activeAnchor) {
-        // @ts-ignore
+        // @ts-ignore comment
         document.querySelectorAll('.toc a.active').forEach((node) => node.classList.remove('active'));
         activeAnchor.classList.add('active');
       }

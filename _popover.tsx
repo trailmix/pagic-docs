@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 import { React, ReactDOM } from './deps.ts';
 import { classnames } from './_utils.tsx';
 
@@ -11,7 +12,7 @@ interface PopoverProps {
   onMouseLeave?: React.MouseEventHandler;
 }
 
-let hoverMap: Record<string, boolean> = {};
+const hoverMap: Record<string, boolean> = {};
 
 export const Popover: React.FC<PopoverProps> = ({
   content,
@@ -77,7 +78,7 @@ export const Popover: React.FC<PopoverProps> = ({
   return (
     <>
       {content && (
-        <PopoverProtal
+        <PopoverPortal
           popoverRootId={popoverRootId}
           content={content}
           placement={placement}
@@ -97,7 +98,7 @@ export const Popover: React.FC<PopoverProps> = ({
   );
 };
 
-const PopoverProtal: React.FC<
+const PopoverPortal: React.FC<
   PopoverProps & {
     popoverRootId: string;
   }
@@ -105,13 +106,13 @@ const PopoverProtal: React.FC<
   if (window.Deno) {
     return null;
   }
-  // @ts-ignore
+  // @ts-ignore comment
   let popoverRoot = document.getElementById(popoverRootId);
   if (!popoverRoot) {
-    // @ts-ignore
+    // @ts-ignore comment
     popoverRoot = document.createElement('div');
     popoverRoot.id = popoverRootId;
-    // @ts-ignore
+    // @ts-ignore comment
     document.body.appendChild(popoverRoot);
   }
   return ReactDOM.createPortal(
