@@ -1,5 +1,5 @@
-import { React } from "../deps.ts";
-import type { PagicLayout } from "../deps.ts";
+import { React } from "../_deps.tsx";
+import type { PagicLayout } from "../_deps.tsx";
 
 import Head from "../_head.tsx";
 import Header from "../_header.tsx";

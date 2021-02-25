@@ -1,5 +1,5 @@
-import { React } from "../deps.ts";
-import type { PagicLayout } from "../deps.ts";
+import { React } from "../_deps.tsx";
+import type { PagicLayout } from "../_deps.tsx";
 
 import { dateFormatter } from "../_utils.tsx";
 
